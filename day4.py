@@ -18,7 +18,8 @@ def build_matrix() -> list:
 def is_out_of_range(start:tuple, inc:tuple, size:int, rows:int) -> bool:
   return (start[0]+3*inc[0] < 0) or (start[1]+3*inc[1] < 0) or (start[0]+3*inc[0] >= rows) or (start[1]+3*inc[1] >= size)
 
-def is_xmas(matrix:list, start:tuple) -> bool:
+def count_xmas(matrix:list, start:tuple) -> bool:
+  result = 0
   directions = [
     (-1,0),   # N
     (-1,1),   # NE
@@ -36,9 +37,9 @@ def is_xmas(matrix:list, start:tuple) -> bool:
     if matrix[start[0]+dir[0]][start[1]+dir[1]] == 'M' and \
        matrix[start[0]+2*dir[0]][start[1]+2*dir[1]] == 'A' and \
        matrix[start[0]+3*dir[0]][start[1]+3*dir[1]] == 'S':
-      return True
+      result += 1
 
-  return False
+  return result
 
 def main():
   result = 0
@@ -46,8 +47,7 @@ def main():
   x_list = find_X(input)
 
   for x in x_list:
-    if is_xmas(input, x):
-      result+=1
+    result+=count_xmas(input,x)
 
   print(f"XMAS={result}")
 
