@@ -18,7 +18,7 @@ def build_matrix() -> list:
 def is_out_of_range(start:tuple, inc:tuple, size:int, rows:int) -> bool:
   return (start[0]+3*inc[0] < 0) or (start[1]+3*inc[1] < 0) or (start[0]+3*inc[0] >= rows) or (start[1]+3*inc[1] >= size)
 
-def count_xmas(matrix:list, start:tuple) -> bool:
+def count_xmas(matrix:list, start:tuple) -> int:
   result = 0
   directions = [
     (-1,0),   # N
